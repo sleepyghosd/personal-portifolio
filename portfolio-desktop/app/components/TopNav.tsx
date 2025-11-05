@@ -1,20 +1,18 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function TopNav() {
   const pathname = usePathname();
-  const linkClass = (path: string) =>
-    `mx-4 text-lg font-semibold transition ${
-      pathname === path
-        ? "text-blue-400 underline"
-        : "text-white hover:text-blue-300"
-    }`;
-
+  
   return (
-    <nav className="w-full flex justify-center items-center border-b border-gray-700 py-4 bg-black/50 backdrop-blur">
-      <Link href="/" className={linkClass("/")}>
+    <nav style={{ display: "flex", gap: 8, alignItems: "center" }}>
+      <Link href="/" className={`top-tab ${pathname === "/" ? "active" : ""}`}>
         Home
+      </Link>
+      <Link href="/works" className={`top-tab ${pathname === "/works" ? "active" : ""}`}>
+        Works
       </Link>
     </nav>
   );
